@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    build:
+      context: git://github.com/dunse/two-tier-web-app
+      dockerfile: web/Dockerfile
+    restart: always
+    ports:
+     - "8084:8084"
+    links:
+     - app1
+     - app2
+  app1:
+    build:
+      context: git://github.com/dunse/two-tier-web-app
+      dockerfile: app/Dockerfile
+    restart: always
+  app2:
+    build:
+      context: git://github.com/dunse/two-tier-web-app
+      dockerfile: app/Dockerfile
+    restart: always

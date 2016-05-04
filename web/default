@@ -1,0 +1,12 @@
+upstream backend {
+    server app1:8484;
+    server app2:8484;
+}
+
+server {
+  listen   8084;
+
+  location / {
+    proxy_pass http://backend;
+  }
+}
